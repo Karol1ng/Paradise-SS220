@@ -22,6 +22,7 @@
 	var/obj/item/clothing/suit/attached_suit
 
 /obj/item/smithed_item/insert/set_stats()
+	..()
 	brute_armor = initial(brute_armor) * quality.stat_mult * material.brute_armor_mult
 	burn_armor = initial(burn_armor) * quality.stat_mult * material.burn_armor_mult
 	laser_armor = initial(laser_armor) * quality.stat_mult * material.laser_armor_mult
@@ -77,7 +78,7 @@
 	name = "fireproofing plate"
 	desc = "A heavy plate of asbestos designed to fireproof a user. A firefighter's godsend."
 	burn_armor = 10
-	movement_speed_mod = -0.2
+	movement_speed_mod = -1
 	heat_insulation = 20
 	secondary_goal_candidate = TRUE
 
@@ -111,7 +112,7 @@
 	laser_armor = 10
 	explosive_armor = 10
 	radiation_armor = 10
-	movement_speed_mod = -0.2
+	movement_speed_mod = -1
 
 /obj/item/smithed_item/insert/engineering
 	name = "engineering mesh"
@@ -122,7 +123,7 @@
 	heat_insulation = 10
 	explosive_armor = 10
 	siemens_coeff = 0.4
-	movement_speed_mod = -0.2
+	movement_speed_mod = -1
 
 /obj/item/smithed_item/insert/heavy
 	name = "heavy duty plate"
@@ -133,7 +134,7 @@
 	explosive_armor = 10
 	heat_insulation = 10
 	siemens_coeff = -0.4
-	movement_speed_mod = -0.4
+	movement_speed_mod = -1.5
 
 /obj/item/smithed_item/insert/mobility
 	name = "mobility mesh"
