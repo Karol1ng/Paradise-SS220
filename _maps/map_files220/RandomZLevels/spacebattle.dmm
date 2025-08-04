@@ -2611,7 +2611,7 @@
 /turf/simulated/floor/mineral/plastitanium,
 /area/awaymission/space_battle/syndicate)
 "iw" = (
-/obj/structure/chair/office{
+/obj/structure/chair{
 	dir = 1
 	},
 /turf/simulated/floor/plasteel{
@@ -4387,7 +4387,7 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/hallway4)
 "op" = (
-/obj/structure/chair/office{
+/obj/structure/chair{
 	dir = 4
 	},
 /obj/structure/cable{
@@ -4600,7 +4600,7 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/hallway3)
 "pc" = (
-/obj/structure/chair/office,
+/obj/structure/chair,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/mob_spawn/human/corpse/spacebattle/scientist,
 /turf/simulated/floor/plasteel{
@@ -6308,9 +6308,9 @@
 /turf/simulated/floor/mineral/plastitanium,
 /area/awaymission/space_battle/syndicate/syndicate2)
 "uX" = (
-/obj/machinery/door/poddoor/multi_tile/double{
+/obj/machinery/door/poddoor/multi_tile{
 	id_tag = "LHall";
-	dir = 1
+	dir = 4
 	},
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -6551,7 +6551,7 @@
 /turf/simulated/floor/plasteel/dark,
 /area/awaymission/space_battle/hallway4)
 "vO" = (
-/obj/structure/chair/office{
+/obj/structure/chair{
 	dir = 1
 	},
 /turf/simulated/floor/plasteel,
@@ -6878,7 +6878,7 @@
 /area/awaymission/space_battle/hallway8)
 "wS" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/chair/office,
+/obj/structure/chair,
 /obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/sec_storage)
@@ -6989,8 +6989,7 @@
 /area/awaymission/space_battle/syndicate/syndicate5)
 "xl" = (
 /obj/machinery/door/poddoor/multi_tile/triple{
-	id_tag = "SpaceBattlePodbay1";
-	dir = 4
+	id_tag = "SpaceBattlePodbay1"
 	},
 /obj/structure/fans/tiny,
 /turf/simulated/floor/plating,
@@ -7227,7 +7226,7 @@
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/space_battle/syndicate/syndicate1)
 "yd" = (
-/obj/structure/chair/office,
+/obj/structure/chair,
 /obj/structure/cable{
 	icon_state = "1-8"
 	},
@@ -7552,7 +7551,7 @@
 /turf/space,
 /area/space)
 "zg" = (
-/obj/structure/chair/office,
+/obj/structure/chair,
 /obj/effect/landmark/awaymissions/spacebattle/mob_spawn/syndie{
 	id = "MainBridge"
 	},
@@ -8038,7 +8037,7 @@
 /area/awaymission/space_battle/syndicate/syndicate2)
 "AS" = (
 /obj/machinery/door/poddoor/multi_tile/triple{
-	dir = 1
+	dir = 4
 	},
 /turf/simulated/floor/plating/airless,
 /area/awaymission/space_battle/syndicate/syndicate2)
@@ -8189,7 +8188,7 @@
 	pixel_x = 32;
 	density = 0
 	},
-/obj/structure/chair/office{
+/obj/structure/chair{
 	dir = 4
 	},
 /turf/simulated/floor/plasteel,
@@ -11078,9 +11077,9 @@
 /turf/simulated/floor/plating,
 /area/awaymission/space_battle/hallway7)
 "KC" = (
-/obj/machinery/door/poddoor/multi_tile/double{
+/obj/machinery/door/poddoor/multi_tile{
 	id_tag = "Rhall";
-	dir = 1
+	dir = 4
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "neutral"
@@ -12604,8 +12603,7 @@
 /area/awaymission/space_battle/hallway9)
 "Py" = (
 /obj/machinery/door/poddoor/multi_tile/triple{
-	id_tag = "SpaceBattlePodbay2";
-	dir = 4
+	id_tag = "SpaceBattlePodbay2"
 	},
 /obj/structure/fans/tiny,
 /turf/simulated/floor/plating,
@@ -13485,7 +13483,7 @@
 	},
 /area/awaymission/space_battle/syndicate/syndicate1)
 "Sp" = (
-/obj/structure/chair/office{
+/obj/structure/chair{
 	dir = 8
 	},
 /turf/simulated/floor/plasteel{
@@ -14540,7 +14538,7 @@
 	},
 /area/awaymission/space_battle/hallway10)
 "VO" = (
-/obj/structure/chair/office,
+/obj/structure/chair,
 /turf/simulated/floor/plasteel{
 	icon_state = "bar"
 	},
@@ -14791,7 +14789,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/space_battle/hallway6)
 "WG" = (
-/obj/structure/chair/office,
+/obj/structure/chair,
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/bridge)
 "WH" = (
@@ -15566,9 +15564,9 @@
 /turf/simulated/floor/plating/airless,
 /area/awaymission/space_battle/cruiser)
 "Zc" = (
-/obj/machinery/door/poddoor/multi_tile/double{
+/obj/machinery/door/poddoor/multi_tile{
 	id_tag = "BR";
-	dir = 1
+	dir = 4
 	},
 /obj/machinery/door_control/shutter/south{
 	id = "BR"

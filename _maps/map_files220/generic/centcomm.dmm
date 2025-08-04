@@ -813,7 +813,7 @@
 /turf/simulated/floor/wood/oak,
 /area/admin)
 "auK" = (
-/obj/structure/chair/office/light{
+/obj/structure/chair/office{
 	dir = 8
 	},
 /turf/simulated/floor/mineral/plastitanium,
@@ -2217,10 +2217,10 @@
 /area/shuttle/syndicate_elite)
 "bcu" = (
 /obj/effect/turf_decal/delivery/blue,
-/obj/machinery/door/poddoor/multi_tile/double{
+/obj/machinery/door/poddoor/multi_tile{
 	id_tag = "ert_shuttle_door";
 	name = "Шаттл ОБР";
-	dir = 1
+	dir = 4
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/admin3)
@@ -5941,12 +5941,12 @@
 /turf/simulated/floor/indestructible/grass/no_creep,
 /area/centcom/ss220/admin1)
 "cFJ" = (
-/obj/machinery/door/airlock/command/glass{
-	name = "Escape Shuttle Cockpit";
-	req_access = list(19)
-	},
 /obj/machinery/status_display/directional/west,
-/turf/simulated/floor/plasteel,
+/obj/machinery/door/airlock/multi_tile/command/glass{
+	name = "Escape Shuttle Cockpit"
+	},
+/obj/effect/mapping_helpers/airlock/access/any/command/general,
+/turf/simulated/floor/plasteel/dark,
 /area/shuttle/escape)
 "cFP" = (
 /obj/effect/turf_decal/plaque{
@@ -7496,8 +7496,7 @@
 /area/syndicate_mothership/elite_squad)
 "doF" = (
 /obj/machinery/door/poddoor/multi_tile/quad{
-	id_tag = "SyndFB_prison_outside";
-	dir = 4
+	id_tag = "SyndFB_prison_outside"
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "brownoldfull"
@@ -9252,10 +9251,10 @@
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/supply)
 "dZw" = (
-/obj/machinery/door/airlock/command/glass{
-	name = "Escape Shuttle Cockpit";
-	req_access = list(63)
+/obj/machinery/door/airlock/multi_tile/command/glass{
+	name = "Escape Shuttle Cockpit"
 	},
+/obj/effect/mapping_helpers/airlock/access/any/security/doors,
 /turf/simulated/floor/plasteel{
 	icon_state = "neutralfull"
 	},
@@ -9343,8 +9342,7 @@
 /obj/machinery/door/poddoor/multi_tile/triple{
 	closingLayer = 3.2;
 	id_tag = "SIT_ready";
-	layer = 3.02;
-	dir = 4
+	layer = 3.02
 	},
 /obj/machinery/shieldwall{
 	dir = 8;
@@ -9380,7 +9378,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
 	},
-/obj/structure/chair/office/light,
+/obj/structure/chair/office,
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -9833,8 +9831,7 @@
 /area/syndicate_mothership/jail)
 "eoV" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	name = "Парк";
-	dir = 4
+	name = "Парк"
 	},
 /turf/simulated/floor/wood/oak,
 /area/centcom/ss220/park)
@@ -11011,7 +11008,7 @@
 /obj/effect/turf_decal/siding/wood/oak,
 /obj/machinery/door/airlock/multi_tile/glass{
 	name = "UNKNOWN";
-	dir = 1
+	dir = 4
 	},
 /turf/simulated/floor/wood/fancy/oak,
 /area/centcom/ss220/admin1)
@@ -11979,10 +11976,9 @@
 	},
 /area/syndicate_mothership/jail)
 "ffJ" = (
-/obj/machinery/door/poddoor/multi_tile/double{
+/obj/machinery/door/poddoor/multi_tile{
 	id_tag = "SIT_ready";
-	layer = 3.01;
-	dir = 4
+	layer = 3.01
 	},
 /obj/machinery/shieldwall{
 	dir = 8;
@@ -12950,7 +12946,7 @@
 	},
 /area/centcom/ss220/admin1)
 "fyn" = (
-/obj/structure/chair/office/light{
+/obj/structure/chair/office{
 	dir = 4
 	},
 /turf/simulated/floor/plasteel{
@@ -13963,7 +13959,7 @@
 /obj/machinery/door/poddoor/multi_tile/triple{
 	id_tag = "nukeop_storage";
 	name = "Storage";
-	dir = 1
+	dir = 4
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "darkneutralfull"
@@ -16110,7 +16106,7 @@
 /turf/simulated/floor/grass,
 /area/ghost_bar/indoor/cave)
 "gWt" = (
-/obj/structure/chair/office/light{
+/obj/structure/chair/office{
 	dir = 4
 	},
 /obj/effect/turf_decal/tile/blue/half/contrasted{
@@ -18734,7 +18730,9 @@
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/supply)
 "hXt" = (
-/obj/machinery/door/airlock/multi_tile/glass,
+/obj/machinery/door/airlock/multi_tile/glass{
+	dir = 4
+	},
 /turf/simulated/floor/wood/fancy/cherry,
 /area/trader_station/sol)
 "hXu" = (
@@ -19285,7 +19283,7 @@
 /turf/simulated/floor/plasteel/dark,
 /area/tdome/tdomeobserve)
 "ikf" = (
-/obj/structure/chair/office/light{
+/obj/structure/chair/office{
 	dir = 1
 	},
 /turf/simulated/floor/wood/oak,
@@ -19790,7 +19788,7 @@
 /obj/effect/turf_decal/siding/wood/oak,
 /obj/machinery/door/airlock/multi_tile/glass{
 	name = "Хранилище Канцелярии";
-	dir = 1
+	dir = 4
 	},
 /turf/simulated/floor/wood/fancy/oak,
 /area/centcom/ss220/admin1)
@@ -20111,9 +20109,8 @@
 /turf/simulated/floor/indestructible/grass,
 /area/syndicate_mothership/outside)
 "iyT" = (
-/obj/machinery/door/poddoor/multi_tile/double{
-	id_tag = "nukeop_ready";
-	dir = 4
+/obj/machinery/door/poddoor/multi_tile{
+	id_tag = "nukeop_ready"
 	},
 /obj/machinery/shieldwall{
 	dir = 8;
@@ -21504,8 +21501,9 @@
 	},
 /area/shuttle/escape)
 "jgz" = (
-/obj/machinery/door/airlock/medical/glass{
-	name = "Escape Shuttle Infirmary"
+/obj/machinery/door/airlock/multi_tile/medical/glass{
+	name = "Escape Shuttle Infirmary";
+	dir = 4
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "neutralfull"
@@ -22012,8 +22010,7 @@
 /obj/machinery/door/poddoor/multi_tile/triple{
 	closingLayer = 3.2;
 	id_tag = "SST_ready";
-	layer = 3.02;
-	dir = 4
+	layer = 3.02
 	},
 /obj/machinery/shieldwall{
 	dir = 8;
@@ -24294,8 +24291,7 @@
 /area/shuttle/administration)
 "kuA" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	name = "Парк";
-	dir = 4
+	name = "Парк"
 	},
 /turf/simulated/floor/plasteel/dark{
 	dir = 8;
@@ -27109,8 +27105,7 @@
 /area/ghost_bar/indoor)
 "lAc" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	name = "Библиотека";
-	dir = 4
+	name = "Библиотека"
 	},
 /turf/simulated/floor/carpet,
 /area/centcom/ss220/bar)
@@ -27726,9 +27721,9 @@
 /turf/simulated/floor/carpet/red,
 /area/wizard_station)
 "lPf" = (
-/obj/machinery/door/poddoor/multi_tile/double{
+/obj/machinery/door/poddoor/multi_tile{
 	id_tag = "Aspid_poddor_left";
-	dir = 1
+	dir = 4
 	},
 /turf/simulated/floor/plasteel{
 	dir = 1;
@@ -28514,8 +28509,7 @@
 /area/syndicate_mothership/elite_squad)
 "mhM" = (
 /obj/machinery/door/poddoor/multi_tile/quad{
-	id_tag = "Aspid_main_storage";
-	dir = 4
+	id_tag = "Aspid_main_storage"
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "darkyellowfull"
@@ -29263,8 +29257,7 @@
 /area/syndicate_mothership/control)
 "mwu" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	name = "Библиотека";
-	dir = 4
+	name = "Библиотека"
 	},
 /turf/simulated/floor/carpet,
 /area/centcom/ss220/park)
@@ -30025,8 +30018,7 @@
 /area/centcom/ss220/bar)
 "mRk" = (
 /obj/machinery/door/poddoor/multi_tile/quad{
-	id_tag = "nukeop_ready";
-	dir = 4
+	id_tag = "nukeop_ready"
 	},
 /obj/machinery/shieldwall{
 	dir = 8;
@@ -32230,6 +32222,10 @@
 	},
 /turf/simulated/floor/carpet/red,
 /area/wizard_station)
+"nQh" = (
+/obj/machinery/door/airlock/multi_tile/glass,
+/turf/simulated/floor/plasteel/dark,
+/area/centcom/ss220/bar)
 "nQm" = (
 /obj/structure/flora/ausbushes/genericbush,
 /turf/simulated/floor/grass,
@@ -35573,9 +35569,9 @@
 	},
 /area/ninja/holding)
 "pri" = (
-/obj/machinery/door/poddoor/multi_tile/double{
+/obj/machinery/door/poddoor/multi_tile{
 	id_tag = "nukeop_outside";
-	dir = 1
+	dir = 4
 	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
@@ -37357,7 +37353,9 @@
 "qlb" = (
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/mapping_helpers/airlock/access/all/centcomm/traders,
-/obj/machinery/door/airlock/multi_tile/glass,
+/obj/machinery/door/airlock/multi_tile/glass{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel/dark{
 	icon_state = "navybluefull"
 	},
@@ -37474,9 +37472,9 @@
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/supply)
 "qnQ" = (
-/obj/machinery/door/poddoor/multi_tile/double{
+/obj/machinery/door/poddoor/multi_tile{
 	id_tag = "Aspid_poddor_right";
-	dir = 1
+	dir = 4
 	},
 /turf/simulated/floor/plasteel{
 	dir = 1;
@@ -37735,7 +37733,7 @@
 "qtB" = (
 /obj/machinery/door/airlock/multi_tile/glass{
 	name = "Столовая ОБР";
-	dir = 1
+	dir = 4
 	},
 /obj/effect/turf_decal/delivery/blue,
 /turf/simulated/floor/plasteel/dark,
@@ -38698,10 +38696,9 @@
 /turf/simulated/floor/plating,
 /area/centcom/ss220/supply)
 "qRj" = (
-/obj/machinery/door/airlock/medical/glass{
+/obj/machinery/door/airlock/multi_tile/medical/glass{
 	name = "Escape Shuttle Infirmary"
 	},
-/obj/effect/turf_decal/stripes/line,
 /turf/simulated/floor/plasteel,
 /area/shuttle/escape)
 "qRr" = (
@@ -39275,7 +39272,7 @@
 /area/centcom/ss220/park)
 "rbJ" = (
 /obj/machinery/door/airlock/multi_tile/command/glass{
-	dir = 1;
+	dir = 4;
 	name = "Зона ЦК"
 	},
 /turf/simulated/floor/plasteel/dark,
@@ -40985,12 +40982,8 @@
 /turf/simulated/floor/mineral/plastitanium,
 /area/shuttle/syndicate)
 "rKN" = (
-/obj/machinery/door/airlock/command/glass{
-	name = "Escape Shuttle Cockpit";
-	req_access = list(19)
-	},
 /obj/machinery/status_display/directional/east,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/dark,
 /area/shuttle/escape)
 "rKQ" = (
 /obj/structure/light_fake{
@@ -45275,7 +45268,7 @@
 /obj/machinery/door/poddoor/multi_tile/quad{
 	id_tag = "nukeop_storage";
 	name = "Storage";
-	dir = 1
+	dir = 4
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "darkneutralfull"
@@ -45647,10 +45640,6 @@
 	icon_state = "navybluefull"
 	},
 /area/centcom/ss220/command)
-"tLz" = (
-/obj/machinery/door/airlock/multi_tile/glass,
-/turf/simulated/floor/plasteel/dark,
-/area/centcom/ss220/bar)
 "tLW" = (
 /obj/structure/light_fake,
 /obj/effect/decal/cleanable/dirt,
@@ -45675,7 +45664,7 @@
 	},
 /area/vox_base)
 "tMn" = (
-/obj/structure/chair/office/light,
+/obj/structure/chair/office,
 /turf/simulated/floor/mineral/plastitanium,
 /area/centcom/ss220/general)
 "tMz" = (
@@ -46189,7 +46178,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 6
 	},
-/obj/structure/chair/office/light,
+/obj/structure/chair/office,
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -46501,10 +46490,9 @@
 /turf/simulated/floor/mineral/plastitanium,
 /area/shuttle/syndicate)
 "uhJ" = (
-/obj/machinery/door/poddoor/multi_tile/double{
+/obj/machinery/door/poddoor/multi_tile{
 	id_tag = "SST_ready";
-	layer = 3.01;
-	dir = 4
+	layer = 3.01
 	},
 /obj/machinery/shieldwall{
 	dir = 8;
@@ -48091,9 +48079,9 @@
 /turf/simulated/wall/indestructible/rock,
 /area/vox_base)
 "uUb" = (
-/obj/machinery/door/airlock/titanium/glass{
-	name = "Emergency Airlock Access";
-	req_access = list(63)
+/obj/machinery/door/airlock/multi_tile/glass{
+	dir = 4;
+	name = "Emergency Airlock Access"
 	},
 /turf/simulated/floor/plasteel,
 /area/shuttle/escape)
@@ -49756,7 +49744,8 @@
 	},
 /area/vox_base)
 "vBp" = (
-/obj/machinery/door/airlock/titanium/glass{
+/obj/machinery/door/airlock/multi_tile/glass{
+	dir = 4;
 	name = "Shuttle Cargo Hatch"
 	},
 /turf/simulated/floor/plasteel,
@@ -49801,7 +49790,7 @@
 /turf/simulated/floor/grass,
 /area/ghost_bar/outdoor)
 "vCe" = (
-/obj/structure/chair/office/light{
+/obj/structure/chair/office{
 	dir = 1
 	},
 /turf/simulated/floor/plasteel{
@@ -50414,8 +50403,7 @@
 /area/centcom/ss220/supply)
 "vPl" = (
 /obj/machinery/door/poddoor/multi_tile/triple{
-	id_tag = "Aspid_deck";
-	dir = 4
+	id_tag = "Aspid_deck"
 	},
 /turf/simulated/floor/plasteel{
 	dir = 1;
@@ -53540,7 +53528,7 @@
 /turf/simulated/floor/carpet/black,
 /area/centcom/ss220/admin1)
 "xio" = (
-/obj/structure/chair/office/light{
+/obj/structure/chair/office{
 	dir = 4
 	},
 /turf/simulated/floor/mineral/plastitanium,
@@ -77473,7 +77461,7 @@ osb
 osb
 osb
 xYo
-tLz
+quL
 osb
 osb
 osb
@@ -78504,7 +78492,7 @@ sZk
 sZk
 sZk
 sZk
-quL
+nQh
 rbs
 fUq
 cWk
@@ -85188,7 +85176,7 @@ fqT
 hWD
 hWD
 iuG
-dZw
+hWD
 iuG
 hWD
 tfi
@@ -85699,7 +85687,7 @@ wId
 cof
 snC
 snC
-uUb
+lLq
 uUb
 snC
 snC
@@ -85962,7 +85950,7 @@ lKj
 snC
 snC
 snC
-vBp
+lLq
 vBp
 snC
 snC
@@ -85970,7 +85958,7 @@ snC
 snC
 lJO
 eRG
-jgz
+hWD
 jgz
 eRG
 snC
@@ -86738,7 +86726,7 @@ ibI
 ibI
 ibI
 vhV
-qRj
+lLq
 yim
 hGl
 pgS

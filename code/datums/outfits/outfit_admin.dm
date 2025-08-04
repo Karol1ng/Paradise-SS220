@@ -894,7 +894,7 @@
 	. = ..()
 	if(visualsOnly)
 		return
-	H.add_language("Zvezhan")
+	H.add_language("Neo-Russkiya") // SS220 EDIT - Zvezhan -> Neo-Russkiya
 
 /datum/outfit/admin/trader/unathi
 	name = "Glint-Scales Trader"
@@ -1418,7 +1418,7 @@
 		B.desc = "Sometimes, someone's just gotta die."
 	var/obj/item/radio/headset/R = H.l_ear
 	if(istype(R))
-		R.flags |= NODROP
+		R.set_nodrop(TRUE, H)
 
 /datum/outfit/admin/honksquad
 	name = "Honksquad"
@@ -1597,7 +1597,7 @@
 	if(prob(50))
 		var/codename_prefix = pick("Exposed", "Unveiled", "Phantom", "Mirage", "Punished", "Invisible", "Swift")
 		codename = "[codename_prefix] [codename]"
-	H.rename_character(null, codename)
+	H.rename_character(H.real_name, codename)
 
 	var/hair_color = "#361A00"
 
