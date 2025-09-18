@@ -88,7 +88,6 @@
 /obj/structure/barricade/wooden
 	name = "wooden barricade"
 	desc = "This space is blocked off by a wooden barricade."
-	icon = 'icons/obj/structures.dmi'
 	icon_state = "woodenbarricade"
 	bar_material = WOOD
 	stacktype = /obj/item/stack/sheet/wood
@@ -159,7 +158,7 @@
 	anchored = FALSE
 	max_integrity = 180
 	proj_pass_rate = 20
-	armor = list(melee = 10, bullet = 50, laser = 50, energy = 50, bomb = 10, rad = 100, fire = 10, acid = 0)
+	armor = list(MELEE = 10, BULLET = 50, LASER = 50, ENERGY = 50, BOMB = 10, RAD = 100, FIRE = 10, ACID = 0)
 	stacktype = null
 	var/deploy_time = 40
 	var/deploy_message = TRUE
@@ -179,7 +178,6 @@
 /obj/item/grenade/barrier
 	name = "barrier grenade"
 	desc = "Instant cover."
-	icon = 'icons/obj/grenade.dmi'
 	icon_state = "wallbang"
 	item_state = "flashbang"
 	actions_types = list(/datum/action/item_action/toggle_barrier_spread)
@@ -464,7 +462,6 @@
 /obj/item/grenade/turret
 	name = "Pop-Up Turret grenade"
 	desc = "Inflates into a Pop-Up turret, shoots everyone on sight who wasn't the primer."
-	icon = 'icons/obj/grenade.dmi'
 	icon_state = "wallbang"
 	item_state = "flashbang"
 	var/owner_uid
