@@ -5,7 +5,7 @@
 	lefthand_file = 'modular_ss220/antagonists/icons/guns/inhands/guns_lefthand.dmi'
 	righthand_file = 'modular_ss220/antagonists/icons/guns/inhands/guns_righthand.dmi'
 	icon_state = "biogun"
-	item_state = "spike_long"
+	inhand_icon_state = "spike_long"
 	var/inhand_charge_sections = 3
 	w_class = WEIGHT_CLASS_HUGE
 	max_capacity = 3
@@ -18,12 +18,12 @@
 	. = ..()
 	if(!is_vox_private)
 		is_vox_private = TRUE
-		to_chat(user, span_notice("Оружие инициализировало вас, более никто кроме Воксов не сможет им воспользоваться."))
+		to_chat(user, SPAN_NOTICE("Оружие инициализировало вас, более никто кроме Воксов не сможет им воспользоваться."))
 
 /obj/item/gun/throw/biogun/afterattack__legacy__attackchain(atom/target, mob/living/user, flag, params)
 	if(is_vox_private && !isvox(user))
 		if(prob(20))
-			to_chat(user, span_notice("Оружие отказывается с вами работать и не активируется."))
+			to_chat(user, SPAN_NOTICE("Оружие отказывается с вами работать и не активируется."))
 		return FALSE
 	. = ..()
 
@@ -39,8 +39,7 @@
 	. = ..()
 	var/num = length(loaded_projectiles) + (to_launch ? 1 : 0)
 	var/inhand_ratio = CEILING((num / max_capacity) * inhand_charge_sections, 1)
-	var/new_item_state = "[initial(item_state)][inhand_ratio]"
-	item_state = new_item_state
+	inhand_icon_state = "[initial(inhand_icon_state)][inhand_ratio]"
 
 /obj/item/gun/throw/biogun/update_overlays()
 	. = ..()
@@ -53,8 +52,8 @@
 	update_icon()
 	var/amount = get_ammocount()
 	if(get_ammocount() >= 1)
-		return span_notice("[src] заряжен [amount]/[max_capacity].")
-	return span_notice("[src] разряжен.")
+		return SPAN_NOTICE("[src] заряжен [amount]/[max_capacity].")
+	return SPAN_NOTICE("[src] разряжен.")
 
 
 // ============== Существа ==============

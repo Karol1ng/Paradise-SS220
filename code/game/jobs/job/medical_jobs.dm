@@ -7,7 +7,7 @@
 	job_department_flags = DEP_FLAG_COMMAND | DEP_FLAG_MEDICAL
 	supervisors = "капитаном"
 	department_head = list("Captain")
-	selection_color = "#ffddf0"
+	selection_color = "#b8ebfa"
 	req_admin_notify = 1
 	department_account_access = TRUE
 	access = list(
@@ -69,7 +69,7 @@
 	job_department_flags = DEP_FLAG_MEDICAL
 	supervisors = "главным врачом"
 	department_head = list("Chief Medical Officer")
-	selection_color = "#ffeef0"
+	selection_color = "#cbf7ff"
 	access = list(
 		ACCESS_MAINT_TUNNELS,
 		ACCESS_MEDICAL,
@@ -114,7 +114,7 @@
 	job_department_flags = DEP_FLAG_MEDICAL
 	supervisors = "главным врачом"
 	department_head = list("Chief Medical Officer")
-	selection_color = "#ffeef0"
+	selection_color = "#cbf7ff"
 	access = list(
 		ACCESS_MAINT_TUNNELS,
 		ACCESS_MEDICAL,
@@ -182,7 +182,7 @@
 	job_department_flags = DEP_FLAG_MEDICAL
 	supervisors = "главным врачом"
 	department_head = list("Chief Medical Officer")
-	selection_color = "#ffeef0"
+	selection_color = "#cbf7ff"
 	access = list(
 		ACCESS_CHEMISTRY,
 		ACCESS_MAINT_TUNNELS,
@@ -200,6 +200,7 @@
 	jobtype = /datum/job/chemist
 
 	uniform = /obj/item/clothing/under/rank/medical/chemist
+	r_pocket = /obj/item/storage/bag/chemistry
 	suit = /obj/item/clothing/suit/storage/labcoat/chemist
 	shoes = /obj/item/clothing/shoes/white
 	l_ear = /obj/item/radio/headset/headset_med
@@ -224,7 +225,7 @@
 	job_department_flags = DEP_FLAG_MEDICAL
 	supervisors = "главным врачом"
 	department_head = list("Chief Medical Officer")
-	selection_color = "#ffeef0"
+	selection_color = "#cbf7ff"
 	access = list(
 		ACCESS_MAINT_TUNNELS,
 		ACCESS_MEDICAL,
@@ -246,6 +247,7 @@
 	jobtype = /datum/job/virologist
 
 	uniform = /obj/item/clothing/under/rank/medical/virologist
+	r_pocket = /obj/item/storage/bag/bio
 	suit = /obj/item/clothing/suit/storage/labcoat/virologist
 	shoes = /obj/item/clothing/shoes/white
 	mask = /obj/item/clothing/mask/surgical
@@ -271,7 +273,7 @@
 	job_department_flags = DEP_FLAG_MEDICAL
 	supervisors = "главным врачом"
 	department_head = list("Chief Medical Officer")
-	selection_color = "#ffeef0"
+	selection_color = "#cbf7ff"
 	access = list(
 		ACCESS_MAINT_TUNNELS,
 		ACCESS_MEDICAL,
@@ -313,7 +315,7 @@
 	job_department_flags = DEP_FLAG_MEDICAL
 	supervisors = "главным врачом"
 	department_head = list("Chief Medical Officer")
-	selection_color = "#ffeef0"
+	selection_color = "#cbf7ff"
 	access = list(
 		ACCESS_CARGO,
 		ACCESS_EVA,
@@ -325,12 +327,13 @@
 		ACCESS_MINING_STATION,
 		ACCESS_MINING,
 		ACCESS_MORGUE,
-		ACCESS_PARAMEDIC
+		ACCESS_PARAMEDIC,
+		ACCESS_TELEPORTER
 	)
 	minimal_player_age = 3
 	exp_map = list(EXP_TYPE_CREW = 180)
 	outfit = /datum/outfit/job/paramedic
-	important_information = "Вы являетесь первым, кто реагирует на неотложные медицинские ситуации за пределами неприкосновенности медицинского отсека. Вы также можете реагировать на вызовы с Лаваленда с помощью шахтерского шаттла, расположенного в отделе снабжения."
+	important_information = "Вы являетесь первым, кто реагирует на неотложные медицинские ситуации за пределами неприкосновенности медицинского отсека. Вы также можете реагировать на вызовы с Лаваленда с помощью шахтерского шаттла, расположенного в отделе снабжения, или в случае чрезвычайных ситуаций в космосе, используя телепортатор рядом с мостиком."
 	standard_paycheck = CREW_PAY_MEDIUM
 
 /datum/outfit/job/paramedic

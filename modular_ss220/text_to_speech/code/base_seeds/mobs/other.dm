@@ -37,37 +37,37 @@
 /mob/living/simple_animal/lizard/add_tts_component()
 	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/ladyvashj)
 
-/mob/living/simple_animal/mouse/add_tts_component()
+/mob/living/basic/mouse/add_tts_component()
 	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/gyro)
 
-/mob/living/simple_animal/mouse/white/add_tts_component()
+/mob/living/basic/mouse/white/add_tts_component()
 	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/meepo)
 
-/mob/living/simple_animal/mouse/brown/add_tts_component()
+/mob/living/basic/mouse/brown/add_tts_component()
 	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/clockwerk)
 
-/mob/living/simple_animal/mouse/brown/tom/add_tts_component()
+/mob/living/basic/mouse/brown/tom/add_tts_component()
 	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/arthas)
 
-/mob/living/simple_animal/mouse/fluff/clockwork/add_tts_component()
+/mob/living/basic/mouse/fluff/clockwork/add_tts_component()
 	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/clockwerk)
 
-/mob/living/simple_animal/mouse/hamster/add_tts_component()
+/mob/living/basic/mouse/hamster/add_tts_component()
 	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/gyro)
 
-/mob/living/simple_animal/mouse/hamster/baby/add_tts_component()
+/mob/living/basic/mouse/hamster/baby/add_tts_component()
 	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/meepo)
 
-/mob/living/simple_animal/hostile/retaliate/goat/add_tts_component()
+/mob/living/basic/goat/add_tts_component()
 	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/muradin)
 
 /mob/living/basic/cow/add_tts_component()
 	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/cairne)
 
-/mob/living/simple_animal/chicken/add_tts_component()
+/mob/living/basic/chicken/add_tts_component()
 	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/windranger)
 
-/mob/living/simple_animal/chick/add_tts_component()
+/mob/living/basic/chick/add_tts_component()
 	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/meepo)
 
 /mob/living/simple_animal/cock/add_tts_component()
@@ -76,7 +76,7 @@
 /mob/living/basic/pig/add_tts_component()
 	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/anubarak)
 
-/mob/living/simple_animal/seal/add_tts_component()
+/mob/living/basic/seal/add_tts_component()
 	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/narrator)
 
 /mob/living/simple_animal/moth/add_tts_component()

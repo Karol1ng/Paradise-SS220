@@ -24,6 +24,15 @@
 	containertype = /obj/structure/largecrate
 	containername = "high-capacity water tank crate"
 
+/datum/supply_packs/misc/paintball_gun
+	name = "Paintball Crate"
+	contains = list(/obj/item/gun/projectile/automatic/paintball_gun,
+		/obj/item/gun/projectile/automatic/paintball_gun,
+		/obj/item/ammo_box/magazine/paintball,
+		/obj/item/ammo_box/magazine/paintball)
+	cost = 300
+	containername = "paintball crate"
+
 /datum/supply_packs/misc/lasertag
 	name = "Laser Tag Crate"
 	contains = list(/obj/item/beach_ball/dodgeball,
@@ -51,8 +60,8 @@
 					/obj/item/reagent_containers/drinks/bottle/holywater,
 					/obj/item/storage/bible/booze,
 					/obj/item/storage/bible/booze,
-					/obj/item/clothing/suit/hooded/chaplain_hoodie,
-					/obj/item/clothing/suit/hooded/chaplain_hoodie,
+					/obj/item/clothing/suit/hooded/dark_robes,
+					/obj/item/clothing/suit/hooded/dark_robes,
 					/obj/item/clothing/under/misc/burial,
 					/obj/item/clothing/under/misc/burial)
 	cost = 250
@@ -522,7 +531,8 @@
 					/obj/item/vending_refill/chefdrobe,
 					/obj/item/vending_refill/hydrodrobe,
 					/obj/item/vending_refill/janidrobe,
-					/obj/item/vending_refill/lawdrobe)
+					/obj/item/vending_refill/lawdrobe,
+					/obj/item/vending_refill/chapdrobe)
 	containername = "service clothing vendor crate"
 
 /datum/supply_packs/misc/vending/clothingvendor/cargo
@@ -690,7 +700,7 @@
 	cost = 100
 	containername = "engineering coffee mugs crate"
 	containertype = /obj/structure/closet/crate/secure
-	access = ACCESS_CONSTRUCTION
+	access = ACCESS_ENGINEERING_GENERAL
 
 /datum/supply_packs/misc/mugs_med
 	name = "Medical Coffee Mugs Crate"
@@ -826,7 +836,7 @@
 	cost = 250
 	containertype = /obj/structure/closet/crate/secure
 	containername = "atmospherics flag crate"
-	access = ACCESS_CONSTRUCTION
+	access = ACCESS_ENGINEERING_GENERAL
 
 /datum/supply_packs/misc/flag_com
 	name = "Command Flag Crate"
@@ -846,3 +856,12 @@
 	cost = 250
 	containername = "assistant flag crate"
 	contraband = TRUE
+
+/datum/supply_packs/misc/premium_havana_cigar
+	name = "premium Havana cigar crate"
+	contains = list(
+		/obj/item/storage/fancy/havana_cigar
+	)
+	cost = 5000 // This is a very luxurious product. And it's only made on Earth. And it's subject to TSF export taxes.
+	containername = "premium Havana cigar crate"
+	containertype = /obj/structure/largecrate

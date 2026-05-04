@@ -29,7 +29,7 @@
 	desc = "It's a card with a magnetic strip attached to some circuitry. It looks too busted to be used for anything but salvage."
 	name = "broken cryptographic sequencer"
 	icon_state = "emag"
-	item_state = "card-id"
+	inhand_icon_state = "card-id"
 	origin_tech = "magnets=2;syndicate=2"
 	prefered_slot_flags = ITEM_SLOT_BOTH_POCKETS
 
@@ -37,7 +37,7 @@
 	desc = "It's a card with a magnetic strip attached to some circuitry."
 	name = "cryptographic sequencer"
 	icon_state = "emag"
-	item_state = "card-id"
+	inhand_icon_state = "card-id"
 	origin_tech = "magnets=2;syndicate=2"
 	flags = NOBLUDGEON
 	flags_2 = NO_MAT_REDEMPTION_2
@@ -71,7 +71,7 @@
 	desc = "It's a card coated in a slurry of electromagnetic bananium."
 	name = "jestographic sequencer"
 	icon_state = "cmag"
-	item_state = "card-id"
+	inhand_icon_state = "card-id"
 	origin_tech = "magnets=2;syndicate=2"
 	flags = NOBLUDGEON
 	flags_2 = NO_MAT_REDEMPTION_2
@@ -93,7 +93,7 @@
 	name = "identification card"
 	desc = "A card used to provide ID and determine access across the station."
 	icon_state = "id"
-	item_state = "card-id"
+	inhand_icon_state = "card-id"
 	/// For redeeming at mining equipment lockers
 	var/mining_points = 0
 	/// Total mining points for the Shift.
@@ -139,17 +139,17 @@
 	if(in_range(user, src))
 		show(usr)
 	else
-		. += "<span class='warning'>It is too far away.</span>"
+		. += SPAN_WARNING("It is too far away.")
 	if(guest_pass)
-		. += "<span class='notice'>There is a guest pass attached to this ID card, <b>Alt-Click</b> to remove it.</span>"
+		. += SPAN_NOTICE("There is a guest pass attached to this ID card, <b>Alt-Click</b> to remove it.")
 		if(world.time < guest_pass.expiration_time)
-			. += "<span class='notice'>It expires at [station_time_timestamp("hh:mm:ss", guest_pass.expiration_time)].</span>"
+			. += SPAN_NOTICE("It expires at [station_time_timestamp("hh:mm:ss", guest_pass.expiration_time)].")
 		else
-			. += "<span class='warning'>It expired at [station_time_timestamp("hh:mm:ss", guest_pass.expiration_time)].</span>"
-		. += "<span class='notice'>It grants access to following areas:</span>"
+			. += SPAN_WARNING("It expired at [station_time_timestamp("hh:mm:ss", guest_pass.expiration_time)].")
+		. += SPAN_NOTICE("It grants access to following areas:")
 		for(var/A in guest_pass.temp_access)
-			. += "<span class='notice'>[get_access_desc(A)].</span>"
-		. += "<span class='notice'>Issuing reason: [guest_pass.reason].</span>"
+			. += SPAN_NOTICE("[get_access_desc(A)].")
+		. += SPAN_NOTICE("Issuing reason: [guest_pass.reason].")
 
 /obj/item/card/id/proc/show(mob/user as mob)
 	var/datum/asset/assets = get_asset_datum(/datum/asset/simple/paper)
@@ -158,6 +158,9 @@
 	var/datum/browser/popup = new(user, "idcard", name, 600, 400)
 	popup.set_content(dat)
 	popup.open()
+
+/obj/item/card/id/proc/regenerate_name()
+	name = "[registered_name]'s ID Card ([assignment])"
 
 /obj/item/card/id/activate_self(mob/user)
 	if(..())
@@ -179,7 +182,7 @@
 	if(victim.has_status_effect(STATUS_EFFECT_OFFERING_EFTPOS))
 		var/obj/item/eftpos/eftpos = victim.is_holding_item_of_type(/obj/item/eftpos)
 		if(!eftpos || !eftpos.can_offer)
-			to_chat(user, "<span class='warning'>They don't seem to have it in hand anymore.</span>")
+			to_chat(user, SPAN_WARNING("They don't seem to have it in hand anymore."))
 			return ITEM_INTERACT_COMPLETE
 		victim.remove_status_effect(STATUS_EFFECT_OFFERING_EFTPOS)
 		eftpos.scan_card(src, user)
@@ -285,7 +288,7 @@
 			name = decal.decal_name
 		desc = decal.decal_desc
 		icon_state = decal.decal_icon_state
-		item_state = decal.decal_item_state
+		inhand_icon_state = decal.decal_inhand_icon_state
 		qdel(decal)
 		qdel(used)
 		return ITEM_INTERACT_COMPLETE
@@ -319,11 +322,11 @@
 		return
 
 	if(guest_pass)
-		to_chat(user, "<span class='notice'>You remove the guest pass from this ID.</span>")
+		to_chat(user, SPAN_NOTICE("You remove the guest pass from this ID."))
 		guest_pass.forceMove(get_turf(src))
 		guest_pass = null
 	else
-		to_chat(user, "<span class='warning'>There is no guest pass attached to this ID.</span>")
+		to_chat(user, SPAN_WARNING("There is no guest pass attached to this ID."))
 
 /obj/item/card/id/serialize()
 	var/list/data = ..()
@@ -368,7 +371,10 @@
 	.["registered_name"] = registered_name
 	.["assignment"] = assignment
 	.["current_skin"] = icon_state
+	.["current_skin_name"] = get_skin_desc(icon_state)
 	.["lastlog"] = lastlog
+	.["access"] = access
+	.["associated_account_number"] = associated_account_number
 
 /obj/item/card/id/proc/flash_card(mob/user)
 	user.visible_message("[user] shows you: [bicon(src)] [name]. The assignment on the card: [assignment]",\
@@ -380,18 +386,18 @@
 /obj/item/card/id/silver
 	desc = "A silver card which shows honour and dedication."
 	icon_state = "silver"
-	item_state = "silver_id"
+	inhand_icon_state = "silver_id"
 
 /obj/item/card/id/gold
 	desc = "A golden card which shows power and might."
 	icon_state = "gold"
-	item_state = "gold_id"
+	inhand_icon_state = "gold_id"
 
 /obj/item/card/id/captains_spare
 	name = "captain's spare ID"
 	desc = "The spare ID of the captain. Keep this secured."
 	icon_state = "gold"
-	item_state = "gold_id"
+	inhand_icon_state = "gold_id"
 	registered_name = "Captain"
 	assignment = "Captain"
 
@@ -402,7 +408,7 @@
 /obj/item/card/id/admin
 	name = "admin ID card"
 	icon_state = "admin"
-	item_state = "gold_id"
+	inhand_icon_state = "gold_id"
 	registered_name = "Admin"
 	assignment = "Testing Shit"
 	untrackable = TRUE
@@ -427,7 +433,6 @@
 	name = "prisoner ID card"
 	desc = "You are a number, you are not a free man."
 	icon_state = "prisoner"
-	item_state = "orange-id"
 	assignment = "Prisoner"
 	registered_name = "Scum"
 	access = list(ACCESS_LIBRARY)
@@ -539,7 +544,7 @@
 	name = "Internal Affairs Agent ID"
 	registered_name = "Internal Affairs Agent"
 	icon_state = "internalaffairsagent"
-	access = list(ACCESS_INTERNAL_AFFAIRS, ACCESS_COURT, ACCESS_SEC_DOORS, ACCESS_MAINT_TUNNELS, ACCESS_RESEARCH, ACCESS_MEDICAL, ACCESS_CONSTRUCTION, ACCESS_MAILSORTING)
+	access = list(ACCESS_INTERNAL_AFFAIRS, ACCESS_COURT, ACCESS_SEC_DOORS, ACCESS_MAINT_TUNNELS, ACCESS_RESEARCH, ACCESS_MEDICAL, ACCESS_ENGINEERING_GENERAL, ACCESS_MAILSORTING)
 
 /obj/item/card/id/geneticist
 	name = "Geneticist ID"
@@ -593,13 +598,13 @@
 	name = "Engineering ID"
 	registered_name = "Engineer"
 	icon_state = "engineering"
-	access = list(ACCESS_EVA, ACCESS_ENGINE, ACCESS_ENGINE_EQUIP, ACCESS_TECH_STORAGE, ACCESS_MAINT_TUNNELS, ACCESS_EXTERNAL_AIRLOCKS, ACCESS_CONSTRUCTION, ACCESS_ATMOSPHERICS)
+	access = list(ACCESS_EVA, ACCESS_ENGINE, ACCESS_ENGINE_EQUIP, ACCESS_TECH_STORAGE, ACCESS_MAINT_TUNNELS, ACCESS_EXTERNAL_AIRLOCKS, ACCESS_ENGINEERING_GENERAL, ACCESS_ATMOSPHERICS)
 
 /obj/item/card/id/atmostech
 	name = "Life Support Specialist ID"
 	registered_name = "Life Support Specialist"
 	icon_state = "atmostech"
-	access = list(ACCESS_EVA, ACCESS_ENGINE, ACCESS_ENGINE_EQUIP, ACCESS_TECH_STORAGE, ACCESS_MAINT_TUNNELS, ACCESS_EXTERNAL_AIRLOCKS, ACCESS_CONSTRUCTION, ACCESS_ATMOSPHERICS)
+	access = list(ACCESS_EVA, ACCESS_ENGINE, ACCESS_ENGINE_EQUIP, ACCESS_TECH_STORAGE, ACCESS_MAINT_TUNNELS, ACCESS_EXTERNAL_AIRLOCKS, ACCESS_ENGINEERING_GENERAL, ACCESS_ATMOSPHERICS)
 
 /obj/item/card/id/captains_spare/assigned
 	name = "Captain ID"
@@ -611,7 +616,7 @@
 	icon_state = "HoP"
 	access = list(ACCESS_SECURITY, ACCESS_SEC_DOORS, ACCESS_BRIG, ACCESS_COURT, ACCESS_FORENSICS_LOCKERS,
 						ACCESS_MEDICAL, ACCESS_ENGINE, ACCESS_CHANGE_IDS, ACCESS_AI_UPLOAD, ACCESS_EVA, ACCESS_HEADS,
-						ACCESS_ALL_PERSONAL_LOCKERS, ACCESS_MAINT_TUNNELS, ACCESS_BAR, ACCESS_JANITOR, ACCESS_CONSTRUCTION, ACCESS_MORGUE,
+						ACCESS_ALL_PERSONAL_LOCKERS, ACCESS_MAINT_TUNNELS, ACCESS_BAR, ACCESS_JANITOR, ACCESS_ENGINEERING_GENERAL, ACCESS_MORGUE,
 						ACCESS_CREMATORIUM, ACCESS_KITCHEN, ACCESS_CARGO, ACCESS_CARGO_BOT, ACCESS_MAILSORTING, ACCESS_QM, ACCESS_HYDROPONICS, ACCESS_INTERNAL_AFFAIRS,
 						ACCESS_THEATRE, ACCESS_CHAPEL_OFFICE, ACCESS_LIBRARY, ACCESS_RESEARCH, ACCESS_MINING, ACCESS_HEADS_VAULT, ACCESS_MINING_STATION,
 						ACCESS_CLOWN, ACCESS_MIME, ACCESS_HOP, ACCESS_RC_ANNOUNCE, ACCESS_KEYCARD_AUTH, ACCESS_EXPEDITION, ACCESS_WEAPONS, ACCESS_MINERAL_STOREROOM)
@@ -622,7 +627,7 @@
 	icon_state = "HoS"
 	access = list(ACCESS_SECURITY, ACCESS_SEC_DOORS, ACCESS_BRIG, ACCESS_EVIDENCE, ACCESS_ARMORY, ACCESS_COURT,
 						ACCESS_FORENSICS_LOCKERS, ACCESS_MORGUE, ACCESS_MAINT_TUNNELS, ACCESS_ALL_PERSONAL_LOCKERS,
-						ACCESS_RESEARCH, ACCESS_ENGINE, ACCESS_MINING, ACCESS_MEDICAL, ACCESS_CONSTRUCTION, ACCESS_MAILSORTING,
+						ACCESS_RESEARCH, ACCESS_ENGINE, ACCESS_MINING, ACCESS_MEDICAL, ACCESS_ENGINEERING_GENERAL, ACCESS_MAILSORTING,
 						ACCESS_HEADS, ACCESS_HOS, ACCESS_RC_ANNOUNCE, ACCESS_KEYCARD_AUTH, ACCESS_EXPEDITION, ACCESS_WEAPONS)
 
 /obj/item/card/id/cmo
@@ -648,7 +653,7 @@
 	icon_state = "CE"
 	access = list(ACCESS_ENGINE, ACCESS_ENGINE_EQUIP, ACCESS_TECH_STORAGE, ACCESS_MAINT_TUNNELS,
 						ACCESS_TELEPORTER, ACCESS_EXTERNAL_AIRLOCKS, ACCESS_ATMOSPHERICS, ACCESS_EVA,
-						ACCESS_HEADS, ACCESS_CONSTRUCTION, ACCESS_SEC_DOORS,
+						ACCESS_HEADS, ACCESS_ENGINEERING_GENERAL, ACCESS_SEC_DOORS,
 						ACCESS_CE, ACCESS_RC_ANNOUNCE, ACCESS_KEYCARD_AUTH, ACCESS_TCOMSAT, ACCESS_MINISAT, ACCESS_MINERAL_STOREROOM)
 
 /obj/item/card/id/ntrep
@@ -657,7 +662,7 @@
 	icon_state = "ntrep"
 	access = list(ACCESS_SECURITY, ACCESS_SEC_DOORS, ACCESS_BRIG, ACCESS_COURT, ACCESS_FORENSICS_LOCKERS,
 						ACCESS_MEDICAL, ACCESS_ENGINE, ACCESS_CHANGE_IDS, ACCESS_EVA, ACCESS_HEADS,
-						ACCESS_ALL_PERSONAL_LOCKERS, ACCESS_MAINT_TUNNELS, ACCESS_BAR, ACCESS_JANITOR, ACCESS_CONSTRUCTION, ACCESS_MORGUE,
+						ACCESS_ALL_PERSONAL_LOCKERS, ACCESS_MAINT_TUNNELS, ACCESS_BAR, ACCESS_JANITOR, ACCESS_ENGINEERING_GENERAL, ACCESS_MORGUE,
 						ACCESS_CREMATORIUM, ACCESS_KITCHEN, ACCESS_CARGO, ACCESS_CARGO_BOT, ACCESS_MAILSORTING, ACCESS_QM, ACCESS_HYDROPONICS, ACCESS_INTERNAL_AFFAIRS,
 						ACCESS_THEATRE, ACCESS_CHAPEL_OFFICE, ACCESS_LIBRARY, ACCESS_RESEARCH, ACCESS_MINING, ACCESS_HEADS_VAULT, ACCESS_MINING_STATION,
 						ACCESS_CLOWN, ACCESS_MIME, ACCESS_HOP, ACCESS_RC_ANNOUNCE, ACCESS_KEYCARD_AUTH, ACCESS_EXPEDITION, ACCESS_WEAPONS, ACCESS_NTREP)
@@ -666,7 +671,7 @@
 	name = "\improper Nanotrasen Career Trainer ID"
 	registered_name = "Nanotrasen Career Trainer"
 	icon_state = "nctrainer"
-	access = list(ACCESS_ALL_PERSONAL_LOCKERS, ACCESS_CARGO, ACCESS_CONSTRUCTION, ACCESS_COURT, ACCESS_EVA, ACCESS_TRAINER, ACCESS_MAINT_TUNNELS,
+	access = list(ACCESS_ALL_PERSONAL_LOCKERS, ACCESS_CARGO, ACCESS_ENGINEERING_GENERAL, ACCESS_COURT, ACCESS_EVA, ACCESS_TRAINER, ACCESS_MAINT_TUNNELS,
 						ACCESS_MEDICAL, ACCESS_RESEARCH, ACCESS_SEC_DOORS, ACCESS_THEATRE, ACCESS_INTERNAL_AFFAIRS)
 
 /obj/item/card/id/blueshield
@@ -675,7 +680,7 @@
 	icon_state = "blueshield"
 	access = list(ACCESS_SECURITY, ACCESS_SEC_DOORS, ACCESS_BRIG, ACCESS_COURT, ACCESS_FORENSICS_LOCKERS,
 						ACCESS_MEDICAL, ACCESS_ENGINE, ACCESS_EVIDENCE, ACCESS_CHANGE_IDS, ACCESS_EVA, ACCESS_HEADS,
-						ACCESS_ALL_PERSONAL_LOCKERS, ACCESS_MAINT_TUNNELS, ACCESS_BAR, ACCESS_JANITOR, ACCESS_CONSTRUCTION, ACCESS_MORGUE,
+						ACCESS_ALL_PERSONAL_LOCKERS, ACCESS_MAINT_TUNNELS, ACCESS_BAR, ACCESS_JANITOR, ACCESS_ENGINEERING_GENERAL, ACCESS_MORGUE,
 						ACCESS_CREMATORIUM, ACCESS_KITCHEN, ACCESS_CARGO, ACCESS_CARGO_BOT, ACCESS_MAILSORTING, ACCESS_QM, ACCESS_HYDROPONICS, ACCESS_INTERNAL_AFFAIRS,
 						ACCESS_THEATRE, ACCESS_CHAPEL_OFFICE, ACCESS_LIBRARY, ACCESS_RESEARCH, ACCESS_MINING, ACCESS_HEADS_VAULT, ACCESS_MINING_STATION,
 						ACCESS_CLOWN, ACCESS_MIME, ACCESS_HOP, ACCESS_RC_ANNOUNCE, ACCESS_KEYCARD_AUTH, ACCESS_EXPEDITION, ACCESS_WEAPONS, ACCESS_BLUESHIELD)
@@ -686,7 +691,7 @@
 	icon_state = "magistrate"
 	access = list(ACCESS_SECURITY, ACCESS_SEC_DOORS, ACCESS_BRIG, ACCESS_COURT, ACCESS_FORENSICS_LOCKERS,
 						ACCESS_MEDICAL, ACCESS_ENGINE, ACCESS_EVIDENCE, ACCESS_CHANGE_IDS, ACCESS_EVA, ACCESS_HEADS,
-						ACCESS_ALL_PERSONAL_LOCKERS, ACCESS_MAINT_TUNNELS, ACCESS_BAR, ACCESS_JANITOR, ACCESS_CONSTRUCTION, ACCESS_MORGUE,
+						ACCESS_ALL_PERSONAL_LOCKERS, ACCESS_MAINT_TUNNELS, ACCESS_BAR, ACCESS_JANITOR, ACCESS_ENGINEERING_GENERAL, ACCESS_MORGUE,
 						ACCESS_CREMATORIUM, ACCESS_KITCHEN, ACCESS_CARGO, ACCESS_CARGO_BOT, ACCESS_MAILSORTING, ACCESS_QM, ACCESS_HYDROPONICS, ACCESS_INTERNAL_AFFAIRS,
 						ACCESS_THEATRE, ACCESS_CHAPEL_OFFICE, ACCESS_LIBRARY, ACCESS_RESEARCH, ACCESS_MINING, ACCESS_HEADS_VAULT, ACCESS_MINING_STATION,
 						ACCESS_CLOWN, ACCESS_MIME, ACCESS_RC_ANNOUNCE, ACCESS_KEYCARD_AUTH, ACCESS_EXPEDITION, ACCESS_MAGISTRATE)
@@ -773,7 +778,7 @@
 /obj/item/card/id/lifetime
 	name = "Lifetime ID Card"
 	desc = "A modified ID card given only to those people who have devoted their lives to the better interests of Nanotrasen. It sparkles blue."
-	icon_state = "lifetimeid"
+	icon_state = "tsf"
 
 /obj/item/card/id/ert
 	name = "ERT ID"
@@ -820,7 +825,7 @@
 		desc = "A card used to claim mining points and buy gear."
 		registered = TRUE
 		can_id_flash = TRUE
-		to_chat(user, "<span class='notice'>The ID is now registered as yours.</span>")
+		to_chat(user, SPAN_NOTICE("The ID is now registered as yours."))
 
 /obj/item/card/id/data
 	icon_state = "data"
@@ -836,8 +841,8 @@
 /obj/item/card/id/nct_data_chip/examine(mob/user)
 	. = ..()
 	. += "<br>The current registered Trainee is: <b>[trainee]</b>"
-	. += "<span class='notice'>Use in hand to reset the assigned trainee and access.</span>"
-	. += "<span class='purple'>The datachip is unable to copy any access that has been deemed high-risk by Nanotrasen Officials. That includes some, if not most, head related access permissions.</span>"
+	. += SPAN_NOTICE("Use in hand to reset the assigned trainee and access.")
+	. += SPAN_PURPLE("The datachip is unable to copy any access that has been deemed high-risk by Nanotrasen Officials. That includes some, if not most, head related access permissions.")
 
 /obj/item/card/id/nct_data_chip/activate_self(mob/user)
 	if(..())
@@ -858,15 +863,15 @@
 		return
 
 	if(user.mind.current != registered_user)
-		to_chat(user, "<span class='notice'>You do not have access to use this NCT Trainee Access Chip!</span>")
+		to_chat(user, SPAN_NOTICE("You do not have access to use this NCT Trainee Access Chip!"))
 		return
 
 	if(istype(target, /obj/item/card/id/ert))
-		to_chat(user, "<span class='warning'>The chip's screen blinks red as you attempt scanning this ID.</span>")
+		to_chat(user, SPAN_WARNING("The chip's screen blinks red as you attempt scanning this ID."))
 		return
 
 	var/obj/item/card/id/I = target
-	to_chat(user, "<span class='notice'>The chip's microscanners activate as you scan [I.registered_name]'s ID, copying its access.</span>")
+	to_chat(user, SPAN_NOTICE("The chip's microscanners activate as you scan [I.registered_name]'s ID, copying its access."))
 	access = I.access.Copy()
 	access.Remove(ACCESS_AI_UPLOAD, ACCESS_ARMORY, ACCESS_CAPTAIN, ACCESS_CE, ACCESS_RD, ACCESS_HOP, ACCESS_QM, ACCESS_CMO, ACCESS_HOS, ACCESS_NTREP,
 						ACCESS_MAGISTRATE, ACCESS_BLUESHIELD, ACCESS_HEADS_VAULT, ACCESS_KEYCARD_AUTH, ACCESS_RC_ANNOUNCE,
@@ -879,6 +884,26 @@
 	desc = "An evil-looking ID issued to members of the Syndicate."
 	icon_state = "syndie"
 
+/obj/item/card/id/vv_get_dropdown()
+	. = ..()
+
+	VV_DROPDOWN_OPTION(VV_HK_MODIFY_ID_CARD, "Modify ID Card")
+
+/obj/item/card/id/vv_do_topic(list/href_list)
+	. = ..()
+
+	if(!.)
+		return
+
+	if(href_list[VV_HK_MODIFY_ID_CARD])
+		if(!check_rights(R_ADMIN))
+			return
+
+		var/turf/T = get_turf(src)
+		message_admins("[key_name_admin(usr)] is modifying the ID card [src] [ADMIN_COORDJMP(T)]")
+		var/datum/ui_module/id_card_modifier/ui = new(target = src)
+		ui.ui_interact(usr)
+
 // Decals
 /obj/item/id_decal
 	name = "identification card decal"
@@ -888,7 +913,7 @@
 	var/decal_name = "identification card"
 	var/decal_desc = "A card used to provide ID and determine access across the station."
 	var/decal_icon_state = "id"
-	var/decal_item_state = "card-id"
+	var/decal_inhand_icon_state = "card-id"
 	var/override_name = 0
 
 /obj/item/id_decal/gold
@@ -897,7 +922,7 @@
 	desc = "Make your ID look like the Captain's or a self-centered HOP's. Applies to any ID."
 	decal_desc = "A golden card which shows power and might."
 	decal_icon_state = "gold"
-	decal_item_state = "gold_id"
+	decal_inhand_icon_state = "gold_id"
 
 /obj/item/id_decal/silver
 	name = "silver ID card decal"
@@ -905,7 +930,7 @@
 	desc = "Make your ID look like HOP's because they wouldn't change it officially. Applies to any ID."
 	decal_desc = "A silver card which shows honour and dedication."
 	decal_icon_state = "silver"
-	decal_item_state = "silver_id"
+	decal_inhand_icon_state = "silver_id"
 
 /obj/item/id_decal/prisoner
 	name = "prisoner ID card decal"
@@ -913,7 +938,6 @@
 	desc = "All the cool kids have an ID that's this color. Applies to any ID."
 	decal_desc = "You are a number, you are not a free man."
 	decal_icon_state = "prisoner"
-	decal_item_state = "orange-id"
 
 /obj/item/id_decal/centcom
 	name = "centcom ID card decal"

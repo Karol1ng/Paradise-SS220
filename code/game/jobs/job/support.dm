@@ -87,6 +87,7 @@
 
 	uniform = /obj/item/clothing/under/rank/cargo/tech
 	l_pocket = /obj/item/mail_scanner
+	r_pocket = /obj/item/storage/bag/mail
 	l_ear = /obj/item/radio/headset/headset_cargo
 	id = /obj/item/card/id/supply
 	pda = /obj/item/pda/cargo
@@ -125,10 +126,12 @@
 
 	gloves = /obj/item/clothing/gloves/smithing
 	uniform = /obj/item/clothing/under/rank/cargo/smith
+	r_pocket = /obj/item/storage/bag/smith
 	l_ear = /obj/item/radio/headset/headset_cargo
 	shoes = /obj/item/clothing/shoes/workboots/smithing
 	id = /obj/item/card/id/smith
 	pda = /obj/item/pda/cargo
+	box = /obj/item/storage/box/survival_mining
 
 /datum/outfit/job/smith/on_mind_initialize(mob/living/carbon/human/H)
 	. = ..()
@@ -174,7 +177,7 @@
 	)
 
 	backpack = /obj/item/storage/backpack/explorer
-	satchel = /obj/item/storage/backpack/satchel/explorer
+	satchel = /obj/item/storage/backpack/satchel_explorer
 	box = /obj/item/storage/box/survival_mining
 
 /datum/outfit/job/mining/on_mind_initialize(mob/living/carbon/human/H)
@@ -194,6 +197,12 @@
 		/obj/item/mining_voucher=1,
 		/obj/item/t_scanner/adv_mining_scanner/lesser=1,
 		/obj/item/gun/energy/kinetic_accelerator=1,\
+		/obj/item/stack/marker_beacon/ten=1
+	)
+
+/datum/outfit/job/mining/equipped/less
+	backpack_contents = list(
+		/obj/item/flashlight/seclite=1,\
 		/obj/item/stack/marker_beacon/ten=1
 	)
 
@@ -230,9 +239,7 @@
 		ACCESS_EXTERNAL_AIRLOCKS,
 		ACCESS_TELEPORTER,
 		ACCESS_CARGO,
-		ACCESS_CARGO_BAY,
 		ACCESS_MINERAL_STOREROOM,
-		ACCESS_SUPPLY_SHUTTLE,
 		ACCESS_MINING_STATION
 	)
 	alt_titles = list("Salvage Technician", "Scavenger")
@@ -245,13 +252,15 @@
 	l_ear = /obj/item/radio/headset/headset_cargo/expedition
 	head = /obj/item/clothing/head/soft/expedition
 	uniform = /obj/item/clothing/under/rank/cargo/expedition
+	l_pocket = /obj/item/storage/bag/expedition
+	r_pocket = /obj/item/storage/bag/ore
 	gloves = /obj/item/clothing/gloves/color/black
 	shoes = /obj/item/clothing/shoes/jackboots
 	belt = /obj/item/storage/belt/utility/expedition
 	id = /obj/item/card/id/explorer
 	pda = /obj/item/pda/explorer
 	backpack = /obj/item/storage/backpack/explorer
-	satchel = /obj/item/storage/backpack/satchel/explorer
+	satchel = /obj/item/storage/backpack/satchel_explorer
 	box = /obj/item/storage/box/survival_mining
 
 /datum/outfit/job/explorer/on_mind_initialize(mob/living/carbon/human/H)
@@ -330,6 +339,7 @@
 	belt = /obj/item/storage/belt/chef
 	head = /obj/item/clothing/head/chefhat
 	l_ear = /obj/item/radio/headset/headset_service
+	neck = /obj/item/clothing/neck/neckerchief/red
 	id = /obj/item/card/id/chef
 	pda = /obj/item/pda/chef
 	backpack_contents = list(
@@ -341,6 +351,7 @@
 	var/datum/martial_art/cqc/under_siege/justacook = new
 	justacook.teach(H) // requires mind
 	ADD_TRAIT(H.mind, TRAIT_TABLE_LEAP, ROUNDSTART_TRAIT)
+	ADD_TRAIT(H.mind, TRAIT_BUTCHER, JOB_TRAIT)
 
 /datum/job/hydro
 	title = "Botanist"
@@ -371,6 +382,7 @@
 	gloves = /obj/item/clothing/gloves/botanic_leather
 	l_ear = /obj/item/radio/headset/headset_service
 	l_pocket = /obj/item/storage/bag/plants/portaseeder
+	r_pocket = /obj/item/storage/bag/plants
 	pda = /obj/item/pda/botanist
 	id = /obj/item/card/id/botanist
 	backpack = /obj/item/storage/backpack/botany
@@ -425,7 +437,7 @@
 	bio_chips = list(/obj/item/bio_chip/sad_trombone)
 
 	backpack = /obj/item/storage/backpack/clown
-	satchel = /obj/item/storage/backpack/satchel/clown
+	satchel = /obj/item/storage/backpack/satchel_clown
 	dufflebag = /obj/item/storage/backpack/duffel/clown
 
 /datum/outfit/job/clown/pre_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
@@ -468,7 +480,7 @@
 	active = TRUE
 	background_icon_state = "bg_spell"
 	build_all_button_icons()
-	to_chat(H, "<span class='notice'>Вы начинаете вести себя неуклюже, чтобы отвести от себя подозрения. Снова сосредоточьтесь, прежде чем использовать оружие.</span>")
+	to_chat(H, SPAN_NOTICE("Вы начинаете вести себя неуклюже, чтобы отвести от себя подозрения. Снова сосредоточьтесь, прежде чем использовать оружие."))
 
 /datum/action/innate/toggle_clumsy/Deactivate()
 	var/mob/living/carbon/human/H = owner
@@ -477,7 +489,7 @@
 	active = FALSE
 	background_icon_state = "bg_default"
 	build_all_button_icons()
-	to_chat(H, "<span class='notice'>Вы сосредоточились и теперь можете эффективно пользоваться оружием.</span>")
+	to_chat(H, SPAN_NOTICE("Вы сосредоточились и теперь можете эффективно пользоваться оружием."))
 
 /datum/job/mime
 	title = "Mime"
@@ -600,16 +612,10 @@
 	jobtype = /datum/job/librarian
 
 	uniform = /obj/item/clothing/under/rank/civilian/librarian
+	suit = /obj/item/clothing/suit/librarian
 	l_ear = /obj/item/radio/headset/headset_service
-	l_pocket = /obj/item/laser_pointer
-	r_pocket = /obj/item/barcodescanner
-	l_hand = /obj/item/storage/bag/books
 	id = /obj/item/card/id/librarian
 	pda = /obj/item/pda/librarian
-	backpack_contents = list(
-		/obj/item/videocam/advanced = 1,
-		/obj/item/clothing/suit/armor/vest/press = 1
-)
 
 /datum/outfit/job/librarian/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	..()

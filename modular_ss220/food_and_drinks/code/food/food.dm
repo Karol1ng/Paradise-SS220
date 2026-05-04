@@ -1168,7 +1168,7 @@
 
 /obj/item/food/fathersoup/On_Consume(mob/M, mob/user)
 	. = ..()
-	user.visible_message(span_notice("У [M] на лбу аж пот выступает."))
+	user.visible_message(SPAN_NOTICE("У [M] на лбу аж пот выступает."))
 	if(prob(33))
 		var/soup_talk = "Ух бля..."
 		M.say(soup_talk)
@@ -1216,7 +1216,7 @@
 /obj/item/pizzabox/infinite/examine(mob/user)
 	. = ..()
 	if(isobserver(user))
-		. += span_deadsay("Эта коробка для пиццы является аномальной и будет производить бесконечное количество пиццы.")
+		. += SPAN_DEADSAY("Эта коробка для пиццы является аномальной и будет производить бесконечное количество пиццы.")
 
 /obj/item/pizzabox/infinite/attack_self__legacy__attackchain(mob/living/user)
 	QDEL_NULL(pizza)
@@ -1230,7 +1230,7 @@
 	desc = "Вкуснейшие сухарики с запахом дымка!"
 	icon = 'modular_ss220/food_and_drinks/icons/food.dmi'
 	icon_state = "disk"
-	item_state = "chips"
+	inhand_icon_state = "chips"
 	bitesize = 3
 	junkiness = 20
 	antable = FALSE
@@ -1243,7 +1243,7 @@
 	name = "диск с сухариками"
 	icon = 'modular_ss220/food_and_drinks/icons/trash.dmi'
 	icon_state = "disk"
-	item_state = "chips"
+	inhand_icon_state = "chips"
 
 // Plov
 /obj/item/food/plov
@@ -1332,4 +1332,4 @@
 	desc = "Когда-то это были вкусные чипсы."
 	icon = 'modular_ss220/food_and_drinks/icons/trash.dmi'
 	icon_state = "MV-chips"
-	item_state = "chips"
+	inhand_icon_state = "chips"

@@ -49,7 +49,7 @@
 	if(!action_checks(target))
 		return
 	if(cooldown_timer > world.time)
-		occupant_message("<span class='warning'>[capitalize(declent_ru(NOMINATIVE))] всё еще заряжается.</span>")
+		occupant_message(SPAN_WARNING("[capitalize(declent_ru(NOMINATIVE))] всё еще заряжается."))
 		return
 	switch(mode)
 		if(MECH_GRAVCAT_MODE_GRAVSLING)
@@ -331,7 +331,7 @@
 /////////////////////////////////////////// GENERATOR /////////////////////////////////////////////
 
 /obj/item/mecha_parts/mecha_equipment/generator
-	name = "exosuit plasma converter"
+	name = "exosuit plasma generator"
 	desc = "Модуль для экзокостюма, который генерирует энергию, используя твёрдую плазму в качестве топлива. Загрязняет окружающую среду плазмой при повреждении."
 	icon_state = "tesla"
 	origin_tech = "plasmatech=2;powerstorage=2;engineering=2"
@@ -411,7 +411,7 @@
 		return fuel_added
 
 	else
-		occupant_message("<span class='warning'>[capitalize(fuel_name)] на минимуме! [capitalize(I.declent_ru(NOMINATIVE))] не может использоваться в качестве топлива.</span>")
+		occupant_message(SPAN_WARNING("[capitalize(fuel_name)] на минимуме! [capitalize(I.declent_ru(NOMINATIVE))] не может использоваться в качестве топлива."))
 		return 0
 
 /obj/item/mecha_parts/mecha_equipment/generator/attackby__legacy__attackchain(weapon,mob/user, params)

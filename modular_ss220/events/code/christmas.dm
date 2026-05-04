@@ -47,7 +47,7 @@ GLOBAL_LIST_EMPTY(possible_gifts)
 		var/list/gift_types_list = subtypesof(/obj/item)
 		for(var/thing in gift_types_list)
 			var/obj/item/item = thing
-			if((!initial(item.icon_state)) || (!initial(item.item_state)) || (initial(item.flags) & (ABSTRACT | NODROP)) || (initial(item.w_class) > 6))
+			if((!initial(item.icon_state)) || (initial(item.flags) & (ABSTRACT | NODROP)) || (initial(item.w_class) > 6))
 				gift_types_list -= thing
 			GLOB.possible_gifts = gift_types_list
 
@@ -97,10 +97,10 @@ GLOBAL_LIST_EMPTY(possible_gifts)
 		return
 
 	if(took_presents[user.ckey] && !unlimited)
-		to_chat(user, span_warning("Ты не видишь подарка со своим именем."))
+		to_chat(user, SPAN_WARNING("Ты не видишь подарка со своим именем."))
 		return
 
-	to_chat(user, span_notice("Немного покопавшись, ты нашёл подарок со своим именем."))
+	to_chat(user, SPAN_NOTICE("Немного покопавшись, ты нашёл подарок со своим именем."))
 
 	if(!unlimited)
 		took_presents[user.ckey] = TRUE
